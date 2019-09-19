@@ -9,16 +9,16 @@ function App() {
   const [user, setUser] = useState([]);
   const [error, setError] = useState("");
 
-  const fetchUser = () => {
-    axios
-      .get(userApi)
-      .then(res => {
-        setUser(res.data.data);
-      })
-      .catch(err => {
-        setError(err.message);
-      });
-  };
+  // const fetchUser = () => {
+  //   axios
+  //     .get(userApi)
+  //     .then(res => {
+  //       setUser(res.data.data);
+  //     })
+  //     .catch(err => {
+  //       setError(err.message);
+  //     });
+  // };
 
   const addUser = (userValues, actions) => {
     const newUser = {
@@ -30,6 +30,7 @@ function App() {
     axios
       .post(userApi, newUser)
       .then(res => {
+
         const newlyOnboardedUser = res.data;
         setUser(user.concat(newlyOnboardedUser));
         actions.resetForm();
@@ -37,18 +38,22 @@ function App() {
       .catch(err => {});
   };
 
-  useEffect(() => {
-    fetchUser();
-  }, []);
+  // useEffect(() => {
+  //   fetchUser();
+  // }, []);
 
   return (
-    <div>
+    <div className="App">
+      <div>
       <Userform onSubmit={addUser} />
-      {user.length ? (
-        user.map(el => <div key={el.id}> {el.first_name}</div>)
-      ) : (
-        <h3>No User on board!!</h3>
-      )}
+      </div>
+      {
+        user.length
+          ? user.map(el => (
+            <div key={el.id}> Hurray !! {el.name},{el.email} is on board</div>
+          ))
+          : 'No User is on board!'
+      }
     </div>
   );
 }

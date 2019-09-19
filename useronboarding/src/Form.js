@@ -32,22 +32,26 @@ function Userform({ onSubmit }) {
         return (
           <Form>
             <div>
-              <label>Name</label>
+              <label> Name </label>
               <Field name="name" type="text" placeholder="Name" />
               <ErrorMessage name="name" component="div" />
             </div>
             <div>
-              <label>Email</label>
+               <label> Email </label>
               <Field name="email" type="email" placeholder="Email" />
               <ErrorMessage name="email" component="div" />
             </div>
             <div>
-              <label>Password</label>
-              <Field name="password" type="text" placeholder="Password" />
+            <label> Password </label>
+              <Field
+                name="password"
+                type="password"
+                placeholder="Password"
+              />
               <ErrorMessage name="password" component="div" />
             </div>
             <div>
-              <Field name="atc" type="checkbox" />
+              <Field name="atc" type="checkbox" checked={props.values.atc} />
               <label> Accept Terms & Conditions </label>
 
               <ErrorMessage name="atc" component="div" />
