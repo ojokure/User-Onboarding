@@ -7,7 +7,7 @@ const initialUserForm = {
   name: "",
   email: "",
   password: "",
-  tos: false
+  atc: false
 };
 
 const validationSchema = yup.object().shape({
@@ -22,46 +22,44 @@ const validationSchema = yup.object().shape({
     .min(8)
 });
 
-function userForm({ onSubmit }) {
-  debugger;
+function Userform({ onSubmit }) {
   return (
-    <div>
-      <Formik
-        initialValues={initialUserForm}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
-        render={props => {
-          return (
-            <Form>
-              <div>
-                <label>Name</label>
-                <Field name='name' type='text' placeholder='Name'/>
-                <ErrorMessage />
-              </div>
-              <div>
-                <label>Email</label>
-                <Field name='email' type='email' placeholder='Email'/>
-                <ErrorMessage />
-              </div>
-              <div>
-                <label>Password</label>
-                <Field name='password' type='text' placeholder='Password'/>
-                <ErrorMessage />
-              </div>
-              <div>
-                <label> Accept Terms & Conditions </label>
-                <Field name='atc' type='checkbox' />
-                <ErrorMessage />
-              </div>
-              <div>
-                <button type='submit'> Submit </button>
-              </div>
-            </Form>
-          );
-        }}
-      />
-    </div>
+    <Formik
+      initialValues={initialUserForm}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+      render={props => {
+        return (
+          <Form>
+            <div>
+              <label>Name</label>
+              <Field name="name" type="text" placeholder="Name" />
+              <ErrorMessage name="name" component="div" />
+            </div>
+            <div>
+              <label>Email</label>
+              <Field name="email" type="email" placeholder="Email" />
+              <ErrorMessage name="email" component="div" />
+            </div>
+            <div>
+              <label>Password</label>
+              <Field name="password" type="text" placeholder="Password" />
+              <ErrorMessage name="password" component="div" />
+            </div>
+            <div>
+              <Field name="atc" type="checkbox" />
+              <label> Accept Terms & Conditions </label>
+
+              <ErrorMessage name="atc" component="div" />
+            </div>
+            <div>
+              <button type="submit"> Submit </button>
+            </div>
+          </Form>
+        );
+      }}
+    />
   );
 }
 
-export default userForm;
+export default Userform;

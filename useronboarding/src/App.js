@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import userForm from "./Form";
+import Userform from "./Form";
 import axios from "axios";
 
 const userApi = "https://reqres.in/api/users";
@@ -21,16 +21,20 @@ function App() {
   };
 
   const addUser = (userValues, actions) => {
+    const newUser = {
+      name: userValues.name,
+      email: userValues.email,
+      password: userValues.password,
+      atc: userValues.atc
+    };
     axios
-      .post(userApi, userValues)
-      .then(res => {})
+      .post(userApi, newUser)
+      .then(res => {
+        const newlyOnboardedUser = res.data;
+        setUser(user.concat(newlyOnboardedUser));
+        actions.resetForm();
+      })
       .catch(err => {});
-  };
-  const newUser = {
-    name: userValues.name,
-    email: userValues.email,
-    password: userValues.password,
-    tos: userValues.tos,
   };
 
   useEffect(() => {
@@ -38,8 +42,8 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <userForm onSubmit={addUser} />
+    <div>
+      <Userform onSubmit={addUser} />
       {user.length ? (
         user.map(el => <div key={el.id}> {el.first_name}</div>)
       ) : (
