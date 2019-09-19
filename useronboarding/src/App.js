@@ -1,24 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,  { useState, useEffect, } from 'react';
 import './App.css';
+import userForm from './Form';
+
+
+
+
+const userApi = 'https://reqres.in/api/users';
 
 function App() {
+
+  const [user, setUser] = useState();
+  const [error, setError] = useState('');
+
+  const fetchUser = () => {
+    axios.get(userApi)
+      .then(res =>{
+
+      })
+      .catch(err => {
+        
+      })
+
+  }
+
+  const addUser = (userValue, actions) => {  
+    
+    axios.post(userApi, value)
+      .then(res => {
+        
+      })
+      .catch(err => {
+      });
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <userForm onSubmit/>
     </div>
   );
 }
