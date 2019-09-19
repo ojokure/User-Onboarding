@@ -19,7 +19,7 @@ const validationSchema = yup.object().shape({
     .email(),
     role: yup
         .string()
-        // .oneOf(["ux designer", "data scientist", "front-end architect"])
+        .oneOf(["ux designer", "data scientist", "front-end architect"])
         .required('Please select a role'),
   password: yup
     .string()
@@ -48,18 +48,19 @@ function Userform({ onSubmit }) {
             </div>
             <div>
               <label> Role </label>
-               <Field
+               {/* <Field
                 type="dropdownlist"
                 name="role"
                 data={["ux engineer", "data scientist", "fornt-end architect"]}
                 placeholder="select a role"
-                touched={props.values.role}
-                {/* <select name="role" type="selectlist" touched={props.values.role}>
+                touched={props.values.role} */}
+                <select name="role" type="selectlist" >
                 <option> select a role </option>
-                <option value="ux designer">ux designer</option>
-                <option value="front-end scientist">front-end scientist</option>
-                <option value="data scientist">data scientist</option>
-              </select> */}
+                <option value="UX DESIGNER">UX DESIGNER</option>
+                <option value="FRONT-END ARCHITECT">FRONT-END ARCHITECT</option>
+                <option value="BACK-END ARCHITECT">BACK-END ARCHITECT</option>
+                <option value="DATA SCIENTIST">DATA SCIENTIST</option>
+              </select>
               <ErrorMessage name="role" component="div" />
             </div>
             <div>
