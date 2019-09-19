@@ -1,12 +1,13 @@
 import App from "./App";
 import React, { useState, useEffect } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import * as yup from "yup";
 
 const initialUserForm = {
   name: "",
   email: "",
   password: "",
+  role: [],
   atc: false
 };
 
@@ -16,6 +17,10 @@ const validationSchema = yup.object().shape({
     .string()
     .required()
     .email(),
+    role: yup
+        .string()
+        // .oneOf(["ux designer", "data scientist", "front-end architect"])
+        .required('Please select a role'),
   password: yup
     .string()
     .required()
@@ -43,13 +48,18 @@ function Userform({ onSubmit }) {
             </div>
             <div>
               <label> Role </label>
-              <select>
-              <option > </option>
-                <option value="UX DESIGNER">UX DESIGNER</option>
-                <option value="FRONT-END ARCHITECT">FRONT-END ARCHITECT</option>
-                <option value="BACK-END ARCHITECT">BACK-END ARCHITECT</option>
-                <option value="DATA SCIENTIST">DATA SCIENTIST</option>
-              </select>
+               <Field
+                type="dropdownlist"
+                name="role"
+                data={["ux engineer", "data scientist", "fornt-end architect"]}
+                placeholder="select a role"
+                touched={props.values.role}
+                {/* <select name="role" type="selectlist" touched={props.values.role}>
+                <option> select a role </option>
+                <option value="ux designer">ux designer</option>
+                <option value="front-end scientist">front-end scientist</option>
+                <option value="data scientist">data scientist</option>
+              </select> */}
               <ErrorMessage name="role" component="div" />
             </div>
             <div>

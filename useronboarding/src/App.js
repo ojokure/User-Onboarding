@@ -24,13 +24,13 @@ function App() {
     const newUser = {
       name: userValues.name,
       email: userValues.email,
+      role: userValues.role,
       password: userValues.password,
       atc: userValues.atc
     };
     axios
       .post(userApi, newUser)
       .then(res => {
-
         const newlyOnboardedUser = res.data;
         setUser(user.concat(newlyOnboardedUser));
         actions.resetForm();
@@ -45,15 +45,17 @@ function App() {
   return (
     <div className="App">
       <div>
-      <Userform onSubmit={addUser} />
+        <Userform onSubmit={addUser} />
       </div>
-      {
-        user.length
-          ? user.map(el => (
-            <div key={el.id}> Hurray !! {el.name},{el.email} is on board</div>
+      {user.length
+        ? user.map(el => (
+            <div key={el.id}>
+              <h3>You're welcome on board as our new {el.role}, {el.name}</h3>
+              <div>{el.email} </div>
+            </div>
+            
           ))
-          : 'No User is on board!'
-      }
+        : <h3> We're happy to see you, type in your details and join our Team ! </h3>}
     </div>
   );
 }
