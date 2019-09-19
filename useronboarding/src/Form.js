@@ -11,15 +11,25 @@ const initialUserForm = {
   tos: false,
 }
 
+const validationSchema = yup.object().shape({
+        name:yup.string().required(),
+        email:yup.string().required().email(),
+        password:yup.string().required().min(8)
+
+})
 
 
-function userForm() {
 
+function userForm({onSubmit}) {
+debugger
 return(
        <div>
 
         <Formik
-        
+        initialValues={initialUserForm}
+        validationSchema={}
+         onSubmit={onSubmit}
+         render
         />
    </div>
 

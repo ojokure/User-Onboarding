@@ -20,11 +20,17 @@ function App() {
       });
   };
 
-  const addUser = (userValue, actions) => {
+  const addUser = (userValues, actions) => {
     axios
-      .post(userApi, userValue)
+      .post(userApi, userValues)
       .then(res => {})
       .catch(err => {});
+  };
+  const newUser = {
+    name: userValues.name,
+    email: userValues.email,
+    password: userValues.password,
+    tos: userValues.tos,
   };
 
   useEffect(() => {
