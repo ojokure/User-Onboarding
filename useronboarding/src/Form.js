@@ -37,19 +37,27 @@ function Userform({ onSubmit }) {
               <ErrorMessage name="name" component="div" />
             </div>
             <div>
-               <label> Email </label>
+              <label> Email </label>
               <Field name="email" type="email" placeholder="Email" />
               <ErrorMessage name="email" component="div" />
             </div>
             <div>
-            <label> Password </label>
-              <Field
-                name="password"
-                type="password"
-                placeholder="Password"
-              />
+              <label> Role </label>
+              <select>
+              <option > </option>
+                <option value="UX DESIGNER">UX DESIGNER</option>
+                <option value="FRONT-END ARCHITECT">FRONT-END ARCHITECT</option>
+                <option value="BACK-END ARCHITECT">BACK-END ARCHITECT</option>
+                <option value="DATA SCIENTIST">DATA SCIENTIST</option>
+              </select>
+              <ErrorMessage name="role" component="div" />
+            </div>
+            <div>
+              <label> Password </label>
+              <Field name="password" type="password" placeholder="Password" />
               <ErrorMessage name="password" component="div" />
             </div>
+
             <div>
               <Field name="atc" type="checkbox" checked={props.values.atc} />
               <label> Accept Terms & Conditions </label>
