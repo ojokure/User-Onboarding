@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 
 
-initialUserForm = {
+const initialUserForm = {
   name:"",
   email:"",
   password:"",
@@ -13,24 +13,15 @@ initialUserForm = {
 
 
 
-const userForm =() => {
+function userForm() {
 
 return(
        <div>
 
         <Formik
         
-        
-        
-        
-        
         />
-
-
-
-
-
-       </div>
+   </div>
 
 )};
 
